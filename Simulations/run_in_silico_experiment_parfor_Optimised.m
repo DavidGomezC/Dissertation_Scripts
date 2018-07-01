@@ -34,7 +34,7 @@ end
 setpref('Internet','E_mail','david.andorra93@gmail.com');
 setpref('Internet','SMTP_Server','smtp.gmail.com');
 setpref('Internet','SMTP_Username','david.andorra93@gmail.com');
-setpref('Internet','SMTP_Password','Musicman47');
+setpref('Internet','SMTP_Password','pasword');
 props = java.lang.System.getProperties;
 props.setProperty('mail.smtp.auth','true');
 props.setProperty('mail.smtp.socketFactory.class', 'javax.net.ssl.SSLSocketFactory');
