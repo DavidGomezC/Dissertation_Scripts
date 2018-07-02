@@ -1,5 +1,11 @@
 function [] = run_in_silico_experiment_parfor_Optimised(resultBase,globalSolv,localSolv,CR,F,strategy,pf)
 
+if strcmp(globalSolv, 'sres') || strcmp(globalSolv, 'de') || strcmp(globalSolv, 'eSS')
+else
+    fprintf('\nWrong Global Solver Selected. Please Try Again.\n\n');
+    return
+end
+
 numLoops = 1; % Number of loops fixed inside the function instead of an input because it will allways be the same
 numExperiments = 30; % Number of experiments fixed inside the function instead of an input because it will allways be the same
 
@@ -20,7 +26,7 @@ parfor epcc_exps=1:numExperiments
             
         catch err
             %open file
-            errorFile = [resultBase,'-','Optsteps',globalSolv,'-','_',localSolv,num2str(numLoops),'_loops-',num2str(epcc_exps),'.errorLog'];
+            errorFile = [resultBase,'-','Optsteps_',globalSolv,'-','_',localSolv,num2str(numLoops),'_loops-',num2str(epcc_exps),'.errorLog'];
             fid = fopen(errorFile,'a+');
             fprintf(fid, '%s', err.getReport('extended', 'hyperlinks','off'));
             % close file
