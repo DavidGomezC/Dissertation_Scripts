@@ -3,12 +3,12 @@ function [] = run_in_silico_experiment_parfor_Optimised(resultBase,globalSolv,lo
 numLoops = 1; % Number of loops fixed inside the function instead of an input because it will allways be the same
 numExperiments = 30; % Number of experiments fixed inside the function instead of an input because it will allways be the same
 
-mkdir(resultBase); % New folder where to keep all the .dat files instead of in the same folder and with the tag name used for the simulation for track easines
-cd(resultBase); % Change directory to the neww folder
-
 AMIGO_Startup();
 
 load('MatrixParameters_InputComparison30.mat');   
+
+mkdir(resultBase); % New folder where to keep all the .dat files instead of in the same folder and with the tag name used for the simulation for track easines
+cd(resultBase); % Change directory to the neww folder
 
 parfor epcc_exps=1:numExperiments
         stepd = 200;
