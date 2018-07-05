@@ -148,12 +148,14 @@ for i=1:numLoops
    
     if strcmp(globalSolv, 'eSS')
         inputs.nlpsol.nlpsolver=globalSolv;
-        inputs.nlpsol.eSS.maxeval = 50e4;
+        inputs.nlpsol.eSS.maxeval = 3e5;
         inputs.nlpsol.eSS.maxtime = 30e3;
         inputs.nlpsol.eSS.local.solver = localSolv; 
-        inputs.nlpsol.eSS.local.finish = localSolv;
-        inputs.nlpsol.eSS.local.nl2sol.maxiter  =     500;     % max number of iteration
-        inputs.nlpsol.eSS.local.nl2sol.maxfeval =     500;     % max number of function evaluation
+        inputs.nlpsol.eSS.local.finish = localSolv;        
+        if strcmp(localSolv, 'nl2sol')
+            inputs.nlpsol.eSS.local.nl2sol.maxiter  =     500;     % max number of iteration
+            inputs.nlpsol.eSS.local.nl2sol.maxfeval =     500;     % max number of function evaluation
+        end
         inputs.nlpsol.eSS.log_var=1:inputs.exps.n_steps{iexp};
     elseif strcmp(globalSolv, 'de') 
         if strcmp(localSolv, 'dhc') || strcmp(localSolv, 'n12sol')|| strcmp(localSolv, 'fminsearch')|| strcmp(localSolv, 'fmincon')
