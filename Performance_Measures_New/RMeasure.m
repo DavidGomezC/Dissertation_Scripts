@@ -21,7 +21,7 @@ for x=1:length(list2(:,1))
     load(list2(x,:));
     if strcmp(measure, 'Q_Measure')
         vper = [vper, Qm];
-        best = max(vper);
+        best = min(vper);
     elseif strcmp(measure, 'AverageOfConvergence')
         vper = [vper, p];
         best = max(vper);    

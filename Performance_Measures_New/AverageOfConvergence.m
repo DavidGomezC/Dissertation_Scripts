@@ -6,7 +6,7 @@ cd (directory);
 SN = ls; 
 list2 =[]; 
 for x=1:length(SN(:,1)) 
-    if (contains(SN(x,:),'IndProm')) 
+    if (contains(SN(x,:),'Optsteps')) 
         list2=[list2; SN(x,:)]; 
     end
 end
@@ -18,7 +18,7 @@ epsilon = -1e40; % Provisional for the test
 
 for x=1:length(list2(:,1))
     load(list2(x,:));
-    f = results.nlpsol.fbest;
+    f = oed_results{1}.nlpsol.fbest;
     endv = [endv f];
 end
 

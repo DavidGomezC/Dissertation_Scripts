@@ -1,16 +1,3 @@
-% This script calculates the average of convergence for a global optimizer
-% that has been run X times which is the probability of convergence.
-
-% TEST HYPOTHESIS: introduce my deffinition of probability of convergence
-% --> Use the cost function values and average it to the total number
-% of trials, then rest it to the best value (converged) to obtain the
-% average distance to the best value. The probability will be 1 -
-% (Distance/best) where if the cost function stays at 0 then the distance
-% will be the same as the best value and hence probability of convergence 0
-% while if distance is 0 probability of convergence is 1. This allos to
-% consider elements that get close to the optimum but they do not reach it
-% (usual tendency of stochastic algorithms). 
-
 function [] = AverageOfConvergence2 (directory, label) % Inputs: label --> mark or name to be given to the results so it can be uploaded; results --> results from AMIGO2 simulation to be analysed 
 
 endv = []; % Empty Matrix that will include the last element of each vector of a matrix (under the assumption that the results from AMIGO will be a matrix where the last element of each vector or at least some of them will be the value of the cost function)
@@ -22,13 +9,13 @@ cd (directory);
 SN = ls; 
 list2 =[]; 
 for x=1:length(SN(:,1)) 
-    if (contains(SN(x,:),'IndProm')) 
+    if (contains(SN(x,:),'Optsteps')) 
         list2=[list2; SN(x,:)]; 
     end
 end
 for x=1:length(list2(:,1))
     load(list2(x,:));
-    f = results.nlpsol.fbest;
+    f = oed_results{1}.nlpsol.fbest;
     endv = [endv f];
 end
 

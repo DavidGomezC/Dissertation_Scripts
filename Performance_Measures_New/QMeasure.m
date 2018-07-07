@@ -15,7 +15,7 @@ cd (directory);
 SN = ls; 
 list2 =[]; 
 for x=1:length(SN(:,1)) 
-    if (contains(SN(x,:),'IndProm')) 
+    if (contains(SN(x,:),'Optsteps')) 
         list2=[list2; SN(x,:)]; 
     end
 end
@@ -25,11 +25,11 @@ cf = {};
 fe = {};
 for x=1:length(list2(:,1))
     load(list2(x,:));
-    a = results.nlpsol.f;
-    b = results.nlpsol.neval;
+    a = oed_results{1}.nlpsol.f;
+    b = oed_results{1}.nlpsol.neval;
     cf{x} = a;
     fe{x} = b;
-    f = results.nlpsol.fbest; % This is for the probability
+    f = oed_results{1}.nlpsol.fbest; % This is for the probability
     endv = [endv f]; % This is for the probability
 end
 
