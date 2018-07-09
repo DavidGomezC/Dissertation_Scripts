@@ -27,15 +27,12 @@ pA2 = trapz(x2,y2);
  
 ABC = pA1 - pA2; % Calculation of the area between curves
 
-% hold on;
-% plot(x1, y1, 'LineWidth',3); % Plot to visualize the results
-% 
-% plot(x2, y2, 'LineWidth',3);
-% patch([x1 fliplr(x2)], [y1 fliplr(y2)], 'g');
-% title(['Area between curves: ', num2str(ABC)]);
-% xlabel('generation');
-% ylabel('Accuracy');
-% hold off;
+%%%%% Save Results CSV %%%%%
+y1csv = [1, y1].';
+y2csv = [2, y2].';
+abc = [y1csv(:), y2csv(:)];
+csvwrite([resultsA1, resultsA2,'ABC.csv'],abc);
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 cd(strcat('AreaBetweenCurves')); % Changes directory to the new folder
 
