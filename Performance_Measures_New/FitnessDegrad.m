@@ -113,5 +113,13 @@ saveas(fig2,[directory,'_BDegr2.png']);
 
 cd ..\; % Back to the original directory
 
+%%%%% Save Results CSV %%%%%
+A1 = [1, y].';
+R1 = [2, rl1].';
+A2 = [3, t].';
+R2 = [4, rl2].';
+FD = [A1(:), R1(:), A2(:), R2(:)];
+csvwrite([directory,'FitnessDegradation.csv'],FD);
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 end
