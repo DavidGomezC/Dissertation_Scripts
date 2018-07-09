@@ -69,6 +69,13 @@ title('Accuracy Plot')
 xlabel('Function Evaluations')
 ylabel('Accuracy')
 
+%%%%% Save Results CSV %%%%%
+xcsv = [0, x].';
+ycsv = [1, y].';
+acc = [xcsv(:), ycsv(:)];
+csvwrite([directory,'Accuracy.csv'],acc);
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 cd(strcat('Accuracy')); % Changes directory to the new folder
 
 save([directory,'-Accuracy'],'At'); % This saves the value of the probability calculated in the current folder as a .mat file and with the label at the beginning to be able to identify it.
