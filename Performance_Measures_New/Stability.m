@@ -34,6 +34,10 @@ title('Stability Plot')
 xlabel('Function Evaluation')
 ylabel('Stability')
 
+%%%%% Save Results CSV %%%%%
+st = [1, Sg].';
+csvwrite([directory,'Stability.csv'],st);
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 cd(strcat('Stability')); % Changes directory to the new folder
 
