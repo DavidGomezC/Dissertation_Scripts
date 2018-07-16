@@ -67,7 +67,7 @@ OP = sum(F)/length(F(:,1));
 
 dis = abs(F - OP); 
 
-Pm = max(dis); 
+Pm = max(dis)*(-1); 
 
 
 cd(strcat('P-Measure')); % Changes directory to the new folder
