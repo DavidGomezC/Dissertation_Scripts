@@ -13,10 +13,17 @@ end
 
 
 f_val = [];
+f_val_De = [];
 for x=1:length(list2(:,1))
-    load(list2(x,:));
-    f = oed_results{1}.nlpsol.f(1);
-    f_val = [f_val, f];
+    if (contains(list2(x,:),'eSS'))
+        load(list2(x,:));
+        f = oed_results{1}.nlpsol.f(1);
+        f_val = [f_val, f];
+    elseif (contains(list2(x,:),'DE'))
+        load(list2(x,:));
+        f = oed_results{1}.nlpsol.conv_curve(:,2);
+        f_val_De = [f_val_De, f];
+    end
 end
 
 w = max(f_val);
