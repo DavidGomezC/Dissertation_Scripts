@@ -26,7 +26,11 @@ for x=1:length(list2(:,1))
     end
 end
 
-w = max(f_val);
+if ~isempty(f_val)
+    w = max(f_val);
+elseif ~isempty(f_val_De)
+    w = max(f_val_De(1,:));
+end
 
 cd ..\;
 cd ('Functions');
